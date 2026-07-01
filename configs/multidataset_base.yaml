@@ -1,0 +1,74 @@
+# Generic base config for the multi-dataset SSL ablation.
+# dataset_id, output_root and run_name are overridden per run by run_all_datasets.sh.
+run_name: "unnamed"
+seed: 2026
+device: "cuda"
+output_root: "runs"
+
+data:
+  dataset_id: "actbecalf"          # overridden per dataset
+  registry_path: "dataset_registry.yaml"
+  batch_size: 256
+  num_workers: 4
+  normalize: true
+  channel_policy: "all"            # keep every native channel
+
+encoder:
+  name: "cnn_tfc"
+  d_model: 128
+  kernel_size: 8
+  stride: 1
+  final_out_channels: 128
+  cnn_dropout: 0.35
+  base_channels: 64
+  num_blocks: 3
+  patch_length: 8
+  patch_stride: 8
+  num_heads: 4
+  num_layers: 3
+  dropout: 0.1
+
+pretext:
+  method: "supervised"
+  epochs: 100
+  lr: 3e-4
+  weight_decay: 1e-4
+  grad_clip: 1.0
+  temperature: 0.2
+  projection_dim: 128
+  mask_ratio: 0.5
+  tfc_lambda: 0.2
+  tstcc_lambda: 0.5
+  jitter_sigma: 0.3
+  scale_sigma: 0.1
+  permutation_max_segs: 5
+  freq_remove_ratio: 0.1
+  freq_add_ratio: 0.1
+  collapse_check_every: 5
+  collapse_knn_k: 5
+  collapse_max_samples: 500
+
+finetune:
+  mode: "full"
+  epochs: 100
+  lr: 1e-3
+  encoder_lr_factor: 0.1
+  partial_k: 1
+  weight_decay: 1e-4
+  grad_clip: 1.0
+  class_weights: true              # weighted CrossEntropy at finetune
+  early_stopping_patience: 15
+  scheduler_patience: 5
+  scheduler_factor: 0.5
+
+head:
+  name: "mlp"
+  hidden_dim: 128
+  num_layers: 2
+  dropout: 0.3
+
+eval:
+  tsne_max_points: 1000
+  tsne_perplexity: 30
+  tsne_seed: 2026
+  save_embeddings: true

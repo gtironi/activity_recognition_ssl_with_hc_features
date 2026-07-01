@@ -1,0 +1,27 @@
+# --- Core (training DL + main + modular + PatchTST) ---
+torch>=2.1
+numpy>=1.26
+pandas>=2.0
+pyarrow>=14.0
+scikit-learn>=1.4
+matplotlib>=3.8
+scipy>=1.11
+
+# --- Transformers (PatchTST / HuggingFace head) ---
+transformers>=4.40.0
+huggingface_hub>=0.20
+safetensors>=0.4
+tokenizers>=0.15
+
+# --- pretrain_ablations deps ---
+seaborn>=0.13
+omegaconf>=2.3
+pyyaml>=6.0
+tqdm>=4.66
+
+# --- Edge-efficiency experiments (LoRA / FLOPs table) ---
+peft
+ptflops
+
+# --- Tests ---
+pytest>=8.0

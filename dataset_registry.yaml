@@ -1,0 +1,111 @@
+datasets:
+  # ---------------------------------------------------------------------------
+  # Multi-dataset ablation entries (canonical .pt from export_windowed.py).
+  # processed_root → dataset/processed/<id>; channels auto-detected
+  # at export time, listed here for documentation.
+  # ---------------------------------------------------------------------------
+  actbecalf:
+    format: pt
+    task: classification
+    processed_root: dataset/processed/actbecalf
+    source_processed: dataset/processed/AcTBeCalf
+    domain: cattle
+    channel_names: [acc_x, acc_y, acc_z]
+    num_channels: 3
+    sampling_hz: 25
+    window_len: 75
+    num_classes: ~
+    split_policy: group_split_calf_id
+    group_col: calf_id
+
+  vehkaoja:
+    format: pt
+    task: classification
+    processed_root: dataset/processed/vehkaoja
+    source_processed: dataset/processed/vehkaoja
+    domain: dog
+    channel_names: [acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z]
+    num_channels: 6
+    sampling_hz: 100
+    window_len: 300
+    num_classes: ~
+    split_policy: subject_held_out
+    group_col: calf_id
+
+  marinara:
+    format: pt
+    task: classification
+    processed_root: dataset/processed/marinara
+    source_processed: dataset/processed/marinara
+    domain: dog
+    channel_names: [acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z, mag_x, mag_y, mag_z,
+                    chest_acc_x, chest_acc_y, chest_acc_z, chest_gyr_x, chest_gyr_y, chest_gyr_z,
+                    chest_mag_x, chest_mag_y, chest_mag_z, neck_acc_x, neck_acc_y, neck_acc_z,
+                    neck_gyr_x, neck_gyr_y, neck_gyr_z, neck_mag_x, neck_mag_y, neck_mag_z]
+    num_channels: 27
+    sampling_hz: 100
+    window_len: 300
+    num_classes: ~
+    split_policy: subject_held_out
+    group_col: calf_id
+
+  uci_har:
+    format: pt
+    task: classification
+    processed_root: dataset/processed/uci_har
+    source_processed: dataset/processed/HAR_UCI
+    domain: human
+    channel_names: [acc_x, acc_y, acc_z]
+    num_channels: 3
+    sampling_hz: 50
+    window_len: 128
+    num_classes: ~
+    split_policy: subject_held_out
+    group_col: calf_id
+
+  pamap2:
+    format: pt
+    task: classification
+    processed_root: dataset/processed/pamap2
+    source_processed: dataset/processed/PAMAP2
+    domain: human
+    channel_names: [hand_acc_x, hand_acc_y, hand_acc_z, hand_gyr_x, hand_gyr_y, hand_gyr_z,
+                    hand_mag_x, hand_mag_y, hand_mag_z, chest_acc_x, chest_acc_y, chest_acc_z,
+                    chest_gyr_x, chest_gyr_y, chest_gyr_z, chest_mag_x, chest_mag_y, chest_mag_z,
+                    ankle_acc_x, ankle_acc_y, ankle_acc_z, ankle_gyr_x, ankle_gyr_y, ankle_gyr_z,
+                    ankle_mag_x, ankle_mag_y, ankle_mag_z]
+    num_channels: 27
+    sampling_hz: 100
+    window_len: 300
+    num_classes: ~
+    split_policy: subject_held_out
+    group_col: calf_id
+
+  wisdm:
+    format: pt
+    task: classification
+    processed_root: dataset/processed/wisdm
+    source_processed: dataset/processed/WISDM
+    domain: human
+    channel_names: [phone_acc_x, phone_acc_y, phone_acc_z, phone_gyr_x, phone_gyr_y, phone_gyr_z,
+                    watch_acc_x, watch_acc_y, watch_acc_z, watch_gyr_x, watch_gyr_y, watch_gyr_z]
+    num_channels: 12
+    sampling_hz: 20
+    window_len: 60
+    num_classes: ~
+    split_policy: subject_held_out
+    group_col: calf_id
+
+  horse:
+    format: pt
+    task: classification
+    processed_root: dataset/processed/horse
+    source_processed: dataset/processed/horse
+    domain: horse
+    channel_names: [acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z]
+    num_channels: 6
+    sampling_hz: 100
+    window_len: 200
+    num_classes: ~
+    split_policy: subject_held_out
+    group_col: calf_id

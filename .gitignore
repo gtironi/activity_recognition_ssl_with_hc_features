@@ -1,0 +1,23 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+*.parquets
+*.pth
+*.json
+*.npz
+
+# Dados brutos grandes (obter pelo Zenodo / localmente; não versionar CSV completo)
+dataset/*.csv
+dataset/*.parquet
+
+dataset/
+
+experiments/*/
+logs/
+
+/runs/
+/runs_old/
+/results/
+
